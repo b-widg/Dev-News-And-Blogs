@@ -2,8 +2,12 @@ node_modules/
 
 .env
 
+# config file for svg VSCode extension
 .vscode/
 
 notes.txt
 
-.DS_Stote
+.DS_Store
+
+#practice file with mongoDb exanple functions
+_crud.js

@@ -1,4 +1,3 @@
-require('dotenv').config({ path: './.env' });
 const express = require('express');
 const path = require('path');
 // const { getCssTricks } = require('./utils/getCssTricks');
@@ -8,6 +7,8 @@ const path = require('path');
 // const { getSnyk } = require('./utils/getSnyk');
 // const { loadArticlesToMongoDb } = require('./mongo/loadArticlesToDb');
 const { readArticles } = require('./mongo/readArticles');
+
+require('dotenv').config({ path: './.env' });
 
 const app = express();
 
