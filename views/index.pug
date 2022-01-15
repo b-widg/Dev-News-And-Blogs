@@ -1,0 +1,70 @@
+doctype html
+html(lang="en")
+  head
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      link(rel="stylesheet" href= "css/style.css")
+      title Coding News
+  body
+    header
+      div.header-container 
+        div.title-container
+          div.hamburger-menu &#9776;
+          h1 Web Dev News and Blogs 
+          div.settings-gear &#9881;
+        div.header-seperator
+
+    //- Left Menu with filter options
+    div.menu-container
+      div.menu-list
+        div.menu-close &#10005;
+        div.clear-filter Clear Filter
+        div.filter-label Filter By Source:
+        div.filter-container
+          each source in uniqueSources
+            div.source-filter= source
+        div.filter-label Filter By Tags:
+        div.filter-container
+          each tag in uniqueTags
+            div.tag-filter= tag
+
+    //- gradient line seperating header from main (last child of header)  
+    div.main-content-padding 
+    
+    main
+
+      //- Card Template
+      each article in articles
+        //- article.card-container
+        article.card
+          div.card-head
+            //- Image and link to article
+            a.article-link(href= article.articleLink) 
+              img.image-link(src= article.imageLink   alt="display image for article")
+          div.card-body
+            //- tag links
+            div.tag-container
+              each link, i in article.tagLinks
+                  a.tag-link(href= link)= article.tags[i]
+            //- article and link
+            a(href= article.articleLink) 
+                h2.title= article.title
+            //- author avatar with link
+            div.author-block
+              a.author-image-link(href= article.authorLink)
+                if article.authorImageLink
+                  img.author-image(src= article.authorImageLink alt="author's avatar")
+              a.author-name(href= article.authorLink)
+                P= article.author
+              time.when-published= article.whenPublished
+              //- Logo and link to source website
+              a.source(href= article.sourceLink)
+                img.source-logo(src= article.sourceLogo alt= article.sourceName)
+          div.card-footer
+            img.share(src= "images/icons/share.svg" alt="share")
+            img.like(src= "images/icons/like.svg" alt="like")
+            img.bookmark(src= "images/icons/bookmark.svg" alt="bookmark")
+
+    script(src= 'scripts/filterMenu.js')              
+    script(src= 'scripts/cardFooter.js')
