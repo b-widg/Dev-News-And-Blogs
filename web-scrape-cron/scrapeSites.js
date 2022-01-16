@@ -6,7 +6,6 @@ const { getSnyk } = require('./site-files/getSnyk');
 const { loadArticlesToMongoDb } = require('./loadArticlesToDb');
 
 const runScrapes = async () => {
-  console.log('runScrapes() called!');
   const freeCodeCampArticles = await getFreeCodeCamp();
   const cssTricksArticles = await getCssTricks();
   const devToArticles = await getDevTo();
