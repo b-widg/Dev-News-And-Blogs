@@ -38,7 +38,8 @@ module.exports.getCssTricks = async () => {
           .getAttribute('src');
         whenPublished = card.querySelector('time').textContent.trim();
       }
-      let scrapeTimeStamp = Date.now();
+      const scrapeTimeUnix = Date.now();
+      const scrapeTimeLocal = new Date(scrapeTimeUnix);
 
       const cardContent = {
         sourceName,
@@ -53,7 +54,8 @@ module.exports.getCssTricks = async () => {
         authorLink,
         authorImageLink,
         whenPublished,
-        scrapeTimeStamp,
+        scrapeTimeUnix,
+        scrapeTimeLocal,
       };
       // Skip cards w/o author info.  They're ads.
       if (author !== '') {

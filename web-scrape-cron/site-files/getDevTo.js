@@ -13,8 +13,8 @@ const getCategoryLinks = (tags) => {
   return catagoryLinks;
 };
 
-const getLocalTime = (uixTimeStamp) => {
-  const milliseconds = uixTimeStamp * 1000;
+const getLocalTime = (uinxTimeStamp) => {
+  const milliseconds = uinxTimeStamp * 1000;
   const date = new Date(milliseconds);
   const formattedDate = date.toLocaleString('en-US');
   return formattedDate;
@@ -22,7 +22,10 @@ const getLocalTime = (uixTimeStamp) => {
 
 const createArticles = async (responses) => {
   let articles = [];
+
   responses.forEach((response) => {
+    const scrapeTimeUnix = Date.now();
+    const scrapeTimeLocal = new Date(scrapeTimeUnix);
     const cardContent = {
       sourceName: 'Dev.to',
       sourceLink: 'https://dev.to/',
@@ -36,7 +39,8 @@ const createArticles = async (responses) => {
       authorLink: `https://dev.to/${response.user.name}`,
       authorImageLink: response.user.profile_image_90,
       whenPublished: getLocalTime(response.published_at_int), // converts unix timestamp
-      scrapeTimeStamp: Date.now(),
+      scrapeTimeUnix,
+      scrapeTimeLocal,
     };
     articles = [...articles, cardContent];
   });

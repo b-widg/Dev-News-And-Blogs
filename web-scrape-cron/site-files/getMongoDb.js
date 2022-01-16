@@ -52,6 +52,9 @@ module.exports.getMongoDb = async (url) => {
           }
         });
 
+        const scrapeTimeUnix = Date.now();
+        const scrapeTimeLocal = new Date(scrapeTimeUnix);
+
         const cardContent = {
           sourceName: 'MongoDB',
           sourceLink: 'https://www.mongodb.com/developer/learn',
@@ -65,7 +68,8 @@ module.exports.getMongoDb = async (url) => {
           authorLink: '',
           authorImageLink: '',
           whenPublished: '',
-          scrapeTimeStamp: Date.now(),
+          scrapeTimeUnix,
+          scrapeTimeLocal,
         };
 
         articles = [...articles, cardContent];

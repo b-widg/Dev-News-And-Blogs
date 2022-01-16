@@ -5,9 +5,9 @@ node_modules/
 # config file for svg VSCode extension
 .vscode/
 
-notes.txt
-
 .DS_Store
 
+notes-examples/
 #practice file with mongoDb exanple functions
 _crud.js
+notes.txt

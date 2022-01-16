@@ -39,7 +39,8 @@ const getArticles = async () => {
         // authorLink,
         // authorImageLink,
         // whenPublished,
-        // scrapeTimeStamp,
+        // scrapeTimeUnix,
+        // scrapeTimeLocal,
       };
 
       articles = [...articles, cardContent];
@@ -60,14 +61,17 @@ const getAuthorPubDate = async (articleLink) => {
       .querySelector('.author-image-wrapper > span > img')
       .getAttribute('src');
     const whenPublished = doc.querySelector('.date').textContent.trim();
-    const scrapeTimeStamp = Date.now();
+
+    const scrapeTimeUnix = Date.now();
+    const scrapeTimeLocal = new Date(scrapeTimeUnix);
 
     authorPubDate = {
       author,
       authorLink,
       authorImageLink,
       whenPublished,
-      scrapeTimeStamp,
+      scrapeTimeUnix,
+      scrapeTimeLocal,
     };
   });
   return authorPubDate;

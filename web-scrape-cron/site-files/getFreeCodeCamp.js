@@ -42,7 +42,9 @@ module.exports.getFreeCodeCamp = async () => {
         .src;
       const whenPublished =
         doc.querySelectorAll('time.meta-item')[i].textContent;
-      const scrapeTimeStamp = Date.now();
+
+      const scrapeTimeUnix = Date.now();
+      const scrapeTimeLocal = new Date(scrapeTimeUnix);
 
       const cardContent = {
         sourceName,
@@ -57,7 +59,8 @@ module.exports.getFreeCodeCamp = async () => {
         authorLink,
         authorImageLink,
         whenPublished,
-        scrapeTimeStamp,
+        scrapeTimeUnix,
+        scrapeTimeLocal,
       };
       articles = [...articles, cardContent];
     });
