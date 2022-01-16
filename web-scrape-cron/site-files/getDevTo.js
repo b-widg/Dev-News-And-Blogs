@@ -1,6 +1,7 @@
 const axios = require('axios');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+const { JSDOM } = require('jsdom');
+const { wait } = require('../scrape-utils');
+const { getLocalTime } = require('../scrape-utils');
 
 const formatTags = (tags) => {
   return tags.map((tag) => `#${tag}`);
@@ -13,19 +14,13 @@ const getCategoryLinks = (tags) => {
   return catagoryLinks;
 };
 
-const getLocalTime = (uinxTimeStamp) => {
-  const milliseconds = uinxTimeStamp * 1000;
-  const date = new Date(milliseconds);
-  const formattedDate = date.toLocaleString('en-US');
-  return formattedDate;
-};
-
 const createArticles = async (responses) => {
   let articles = [];
 
   responses.forEach((response) => {
-    const scrapeTimeUnix = Date.now();
-    const scrapeTimeLocal = new Date(scrapeTimeUnix);
+    const scrapeTimeStamp = Date.now();
+    const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
+    const whenPublished = getLocalTime(response.published_at_int);
     const cardContent = {
       sourceName: 'Dev.to',
       sourceLink: 'https://dev.to/',
@@ -38,13 +33,15 @@ const createArticles = async (responses) => {
       author: response.user.name,
       authorLink: `https://dev.to/${response.user.name}`,
       authorImageLink: response.user.profile_image_90,
-      whenPublished: getLocalTime(response.published_at_int), // converts unix timestamp
-      scrapeTimeUnix,
+      whenPublished,
+      scrapeTimeStamp,
       scrapeTimeLocal,
     };
     articles = [...articles, cardContent];
   });
 
+  // Follow the link to each article to get an image from the actial article
+  // and
   let index = 0;
   for await (const article of articles) {
     const url = article.articleLink;
@@ -59,15 +56,13 @@ const createArticles = async (responses) => {
         ? (articles[index].imageLink = imageLink.getAttribute('src'))
         : (articles[index].imageLink = 'images/logos/devtoArticle.svg');
 
-      // if (imageLink) {
-      //   articles[index].imageLink = imageLink.getAttribute('src');
-      // }
       const authorLink =
         'https://dev.to' +
         doc.querySelector('.crayons-link.fw-bold').getAttribute('href');
       articles[index].authorLink = authorLink;
       index += 1;
     });
+    await wait(1000);
   }
   return articles;
 };

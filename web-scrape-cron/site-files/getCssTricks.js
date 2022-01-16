@@ -1,5 +1,5 @@
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+const { JSDOM } = require('jsdom');
+const { getLocalTime } = require('../scrape-utils');
 
 module.exports.getCssTricks = async () => {
   const url = 'https://css-tricks.com/archives/';
@@ -38,9 +38,8 @@ module.exports.getCssTricks = async () => {
           .getAttribute('src');
         whenPublished = card.querySelector('time').textContent.trim();
       }
-      const scrapeTimeUnix = Date.now();
-      const scrapeTimeLocal = new Date(scrapeTimeUnix);
-
+      const scrapeTimeStamp = Date.now();
+      const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
       const cardContent = {
         sourceName,
         sourceLink,
@@ -54,7 +53,7 @@ module.exports.getCssTricks = async () => {
         authorLink,
         authorImageLink,
         whenPublished,
-        scrapeTimeUnix,
+        scrapeTimeStamp,
         scrapeTimeLocal,
       };
       // Skip cards w/o author info.  They're ads.

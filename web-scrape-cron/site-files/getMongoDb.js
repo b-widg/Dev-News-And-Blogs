@@ -1,10 +1,14 @@
 const { JSDOM } = require('jsdom');
+const { getLocalTime } = require('../scrape-utils');
 
 module.exports.getMongoDb = async (url) => {
   let articles = [];
 
   const baseUrl = 'https://www.mongodb.com/developer';
 
+  // Only scraping one catagory for now.  If more are needed in the future
+  // see MongoDB robots.txt file for rate limits and URLs they don't want scrapped
+  // example: don't follow tag links
   const categories = ['/learn/'];
 
   for await (const category of categories) {
@@ -52,8 +56,8 @@ module.exports.getMongoDb = async (url) => {
           }
         });
 
-        const scrapeTimeUnix = Date.now();
-        const scrapeTimeLocal = new Date(scrapeTimeUnix);
+        const scrapeTimeStamp = Date.now();
+        const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
 
         const cardContent = {
           sourceName: 'MongoDB',
@@ -68,7 +72,7 @@ module.exports.getMongoDb = async (url) => {
           authorLink: '',
           authorImageLink: '',
           whenPublished: '',
-          scrapeTimeUnix,
+          scrapeTimeStamp,
           scrapeTimeLocal,
         };
 

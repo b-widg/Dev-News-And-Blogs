@@ -1,5 +1,7 @@
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
+const { wait } = require('../scrape-utils');
+const { getLocalTime } = require('../scrape-utils');
 
 const getArticles = async () => {
   const url = 'https://snyk.io/blog/';
@@ -39,7 +41,7 @@ const getArticles = async () => {
         // authorLink,
         // authorImageLink,
         // whenPublished,
-        // scrapeTimeUnix,
+        // scrapeTimeStamp,
         // scrapeTimeLocal,
       };
 
@@ -62,15 +64,15 @@ const getAuthorPubDate = async (articleLink) => {
       .getAttribute('src');
     const whenPublished = doc.querySelector('.date').textContent.trim();
 
-    const scrapeTimeUnix = Date.now();
-    const scrapeTimeLocal = new Date(scrapeTimeUnix);
+    const scrapeTimeStamp = Date.now();
+    const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
 
     authorPubDate = {
       author,
       authorLink,
       authorImageLink,
       whenPublished,
-      scrapeTimeUnix,
+      scrapeTimeStamp,
       scrapeTimeLocal,
     };
   });
@@ -85,6 +87,7 @@ module.exports.getSnyk = async () => {
     const authorPubDate = await getAuthorPubDate(article.articleLink);
     completeArticle = { ...article, ...authorPubDate };
     articles = [...articles, completeArticle];
+    await wait(1000);
   }
   return articles;
 };

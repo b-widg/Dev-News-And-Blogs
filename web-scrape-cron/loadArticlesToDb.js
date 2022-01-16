@@ -10,11 +10,9 @@ const insertArticles = async (client, articles) => {
     .db('DevNews')
     .collection('current_articles')
     .insertMany(articles);
-  // console.log('INSERT_ARTICLES_RESULT:', result.insertedCount);
 };
 
 module.exports.loadArticlesToMongoDb = async (articles) => {
-  // console.log('process.env.MONGO_URI: ', process.env.MONGO_URI);
   const uri = process.env.MONGO_URI;
   const client = new MongoClient(uri, {
     useNewUrlParser: true,

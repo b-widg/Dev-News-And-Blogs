@@ -1,7 +1,9 @@
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+const { JSDOM } = require('jsdom');
+const { getLocalTime } = require('../scrape-utils');
 
-// to load next 25 articles use url plus page/page_number https://www.freecodecamp.org/news/page/2/ , https://www.freecodecamp.org/news/page/3/ , etc.
+// to load next 25 articles use url plus page/page_number
+// https://www.freecodecamp.org/news/page/2/ ,
+// https://www.freecodecamp.org/news/page/3/ , etc.
 
 module.exports.getFreeCodeCamp = async () => {
   let url = 'https://www.freecodecamp.org/news/';
@@ -43,8 +45,8 @@ module.exports.getFreeCodeCamp = async () => {
       const whenPublished =
         doc.querySelectorAll('time.meta-item')[i].textContent;
 
-      const scrapeTimeUnix = Date.now();
-      const scrapeTimeLocal = new Date(scrapeTimeUnix);
+      const scrapeTimeStamp = Date.now();
+      const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
 
       const cardContent = {
         sourceName,
@@ -59,12 +61,11 @@ module.exports.getFreeCodeCamp = async () => {
         authorLink,
         authorImageLink,
         whenPublished,
-        scrapeTimeUnix,
+        scrapeTimeStamp,
         scrapeTimeLocal,
       };
       articles = [...articles, cardContent];
     });
   });
-  // console.log(articles);
   return articles;
 };
