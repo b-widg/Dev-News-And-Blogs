@@ -29,7 +29,7 @@
   // hide menu when user clicks away
   document.addEventListener('click', (event) => {
     const ancestor = event.target.closest('.menu-container');
-    if (ancestor === null) hideFilterList();
+    if (!ancestor && event.target !== hamburgerMenu) hideFilterList();
   });
 
   // Filter Cards /////////////////////////////
