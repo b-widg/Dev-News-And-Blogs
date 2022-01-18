@@ -15,19 +15,37 @@ html(lang="en")
           div.settings-gear &#9881;
         div.header-seperator
 
-    //- Left Menu with filter options
-    div.menu-container
-      div.menu-list
-        div.menu-close &#10005;
-        div.clear-filter Clear Filter
-        div.filter-label Filter By Source:
-        div.filter-container
-          each source in uniqueSources
-            div.source-filter= source
-        div.filter-label Filter By Tags:
-        div.filter-container
-          each tag in uniqueTags
-            div.tag-filter= tag
+    div.menu-block
+      //- Left Menu with filter options
+      div.menu-container
+        div.menu-list
+          div.menu-close &#10005;
+          div.clear-filter Clear Filter
+          div.filter-label Filter By Source:
+          div.filter-container
+            each source in uniqueSources
+              div.source-filter= source
+          div.filter-label Filter By Tags:
+          div.filter-container
+            each tag in uniqueTags
+              div.tag-filter= tag
+
+      //- Right Settings Menu
+      div.settings-container
+        div.settings-list
+          div.settings-close &#10005;
+          div.sign-in-up
+            div.sign-in Sign In
+            div.create-account Create Account
+          form(action="")
+            label(for= "email")
+            input.email(type= "email" name="email" required)
+            label(for= "password")
+            input.email(type= "password" name="password" required)
+          a(href= "" alt="about page")
+            div.about About
+
+
 
     //- gradient line seperating header from main (last child of header)  
     div.main-content-padding 
@@ -65,6 +83,8 @@ html(lang="en")
             img.share(src= "images/icons/share.svg" alt="share")
             img.like(src= "images/icons/like.svg" alt="like")
             img.bookmark(src= "images/icons/bookmark.svg" alt="bookmark")
+    
+
 
     script(src= 'scripts/filterMenu.js')              
     script(src= 'scripts/cardFooter.js')

@@ -1,17 +1,40 @@
 (() => {
-  // Show/Hide Filter Menu //////////////////////
+  /////////////////////////////////////////////
+  ///  Hide/Show Filter And Settings Menus  ///
+  /////////////////////////////////////////////
+
+  // Left Filter Menu
   const hamburgerMenu = document.querySelector('.hamburger-menu');
   const closeMenuX = document.querySelector('.menu-close');
-  menuList = document.querySelector('.menu-list');
+  const menuList = document.querySelector('.menu-list');
+
+  // Right Settings Menu
+  const settingsGear = document.querySelector('.settings-gear');
+  const closeSettingsX = document.querySelector('.settings-close');
+  const settingsList = document.querySelector('.settings-list');
 
   const hideFilterList = () => {
     menuList.classList.add('hidden-menu');
     menuList.classList.remove('visible-menu');
   };
 
+  const hideSettingsList = () => {
+    settingsList.classList.add('hidden-settings');
+    settingsList.classList.remove('visible-settings');
+  };
+
+  // Show filter and hide settings.
   const showFilterList = () => {
     menuList.classList.add('visible-menu');
     menuList.classList.remove('hidden-menu');
+    hideSettingsList();
+  };
+
+  // Show setings and Hide filter.
+  const showSettingsList = () => {
+    settingsList.classList.add('visible-settings');
+    settingsList.classList.remove('hidden-settings');
+    hideFilterList();
   };
 
   // toggle visibility when hamburger menu clicked
@@ -21,18 +44,38 @@
       : showFilterList();
   });
 
-  // close when X clicked
+  // toggle visibility when settings icon clicked
+  settingsGear.addEventListener('click', () => {
+    settingsList.classList.contains('visible-settings')
+      ? hideSettingsList()
+      : showSettingsList();
+  });
+
+  // close when filter menu X clicked
   closeMenuX.addEventListener('click', () => {
     hideFilterList();
   });
 
-  // hide menu when user clicks away
+  // close when settings X clicked
+  closeSettingsX.addEventListener('click', () => {
+    hideSettingsList();
+  });
+
+  // hide filter menu when user clicks away
   document.addEventListener('click', (event) => {
     const ancestor = event.target.closest('.menu-container');
     if (!ancestor && event.target !== hamburgerMenu) hideFilterList();
   });
 
-  // Filter Cards /////////////////////////////
+  // hide settings menu when user clicks away
+  document.addEventListener('click', (event) => {
+    const ancestor = event.target.closest('.settings-container');
+    if (!ancestor && event.target !== settingsGear) hideSettingsList();
+  });
+
+  /////////////////////////////////////////////
+  //////////////  Filter Cards  ///////////////
+  /////////////////////////////////////////////
   const cards = document.querySelectorAll('article.card');
 
   const clearFilters = () => {

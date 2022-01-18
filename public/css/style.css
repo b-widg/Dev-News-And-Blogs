@@ -78,22 +78,65 @@ header {
   padding: 0.2em 1em;
 }
 
+.menu-block {
+  display: flex;
+  justify-content: space-between;
+}
+
 .menu-list {
   overflow-y: scroll;
   position: fixed;
   background-color: #0000008c;
   color: var(--header-white);
   z-index: 1;
-  max-width: 300px;
+  width: 300px;
   height: 100vh;
   backdrop-filter: blur(0.2em);
   padding: min(30vw, 1em) 0.5em;
   transform: translate3d(-300px, 0px, 0px);
   font-size: large;
 }
+.visible-menu {
+  transform: translate3d(0px, 0px, 0px);
+  transition: all 0.33s ease 0s;
+}
+
+.hidden-menu {
+  transform: translate3d(-300px, 0px, 0px);
+  transition: all 0.33s ease 0s;
+}
+
+.settings-list {
+  overflow-y: scroll;
+  position: fixed;
+  background-color: #0000008c;
+  color: var(--header-white);
+  z-index: 1;
+  width: 300px;
+  height: 100vh;
+  backdrop-filter: blur(0.2em);
+  padding: min(30vw, 1em) 0.5em;
+  transform: translate3d(0px, 0px, 0px);
+  font-size: large;
+}
+
+.visible-settings {
+  transform: translate3d(-300px, 0px, 0px);
+  transition: all 0.33s ease 0s;
+}
+
+.hidden-settings {
+  transform: translate3d(0px, 0px, 0px);
+  transition: all 0.33s ease 0s;
+}
 
 .menu-close {
   float: right;
+  font-size: 1.5em;
+}
+
+.options-close {
+  float: left;
   font-size: 1.5em;
 }
 
@@ -118,7 +161,8 @@ header {
 
 .source-filter,
 .tag-filter,
-.clear-filter {
+.clear-filter,
+.about {
   color: var(--header-white);
   padding: 2px 8px;
 }
@@ -130,16 +174,6 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-}
-
-.visible-menu {
-  transform: translate3d(0px, 0px, 0px);
-  transition: all 0.33s ease 0s;
-}
-
-.hidden-menu {
-  transform: translate3d(-300px, 0px, 0px);
-  transition: all 0.33s ease 0s;
 }
 
 a {
