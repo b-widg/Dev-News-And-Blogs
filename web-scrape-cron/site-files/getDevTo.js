@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { JSDOM } = require('jsdom');
-const { wait } = require('../scrape-utils');
-const { getLocalTime } = require('../scrape-utils');
+const { wait } = require('../scrapeUtils');
+const { getLocalTime } = require('../scrapeUtils');
 
 const formatTags = (tags) => {
   return tags.map((tag) => `#${tag}`);

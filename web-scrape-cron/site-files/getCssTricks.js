@@ -1,5 +1,5 @@
 const { JSDOM } = require('jsdom');
-const { getLocalTime } = require('../scrape-utils');
+const { getLocalTime } = require('../scrapeUtils');
 
 module.exports.getCssTricks = async () => {
   const url = 'https://css-tricks.com/archives/';

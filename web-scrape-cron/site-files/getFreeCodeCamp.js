@@ -1,5 +1,5 @@
 const { JSDOM } = require('jsdom');
-const { getLocalTime } = require('../scrape-utils');
+const { getLocalTime } = require('../scrapeUtils');
 
 // to load next 25 articles use url plus page/page_number
 // https://www.freecodecamp.org/news/page/2/ ,
