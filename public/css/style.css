@@ -1,13 +1,15 @@
-/* https://freefrontend.com/css-cards/ */
-/* https://codepen.io/eyupucmaz/pen/oNbeXOb?editors=1100 */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+@media only screen and (max-width: 480px) {
+  header {
+    font-size: 3.25vw;
+  }
 }
 
 :root {
