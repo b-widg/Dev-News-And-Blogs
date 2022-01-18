@@ -9,8 +9,8 @@
     "run-scrapes": "node ./web-scrape-cron/scrapeSites.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "b-widg",
+  "license": "CC0-1.0",
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^11.0.0",
