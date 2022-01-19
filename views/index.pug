@@ -30,18 +30,24 @@ html(lang="en")
             each tag in uniqueTags
               div.tag-filter= tag
 
+             
+
       //- Right Settings Menu
       div.settings-container
         div.settings-list
           div.settings-close &#10005;
           div.sign-in-up
-            div.sign-in Sign In
-            div.create-account Create Account
-          form(action="")
-            label(for= "email")
-            input.email(type= "email" name="email" required)
-            label(for= "password")
-            input.email(type= "password" name="password" required)
+            form(action="")
+              div.sign-in-txt
+                div.sign-in Sign In
+                button.create-account Create Account
+              label(for= "email")
+              input#email(type= "email" name="email" value="Email Address" required)
+              label(for= "password")
+              input#password(type= "password" name="password" value="XXXXXXXXXXXXXX" required)
+              label(for= "confirm-password")
+              input#confirm-password.hidden(type= "password" name="confirm-password" value="XXXXXXXXXXXXXX" required)
+              button.submit-btn Submit
           a(href= "" alt="about page")
             div.about About
 
