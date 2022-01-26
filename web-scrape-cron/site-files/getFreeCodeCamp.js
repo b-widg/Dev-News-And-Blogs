@@ -15,33 +15,28 @@ module.exports.getFreeCodeCamp = async () => {
     const sourceName = 'freeCodeCamp';
     const sourceLink = 'https://www.freecodecamp.org/news/';
     const sourceLogo = 'images/logos/freecodecamp.svg';
-    // articleCards is only used to get an array of the appropriate length to
-    // loop through.  The index of each child element selected should always match
-    // the index of articleCards when using querySelectoeAll as they should always
-    // occur the same number of times and in the same order.
+
     const articleCards = doc.querySelectorAll('.post-card');
 
     articleCards.forEach((card, i) => {
-      const imageLink = doc.querySelectorAll('img')[i].getAttribute('src');
-      const title = doc
-        .querySelectorAll('.post-card-title > a')
-        [i].textContent.trim();
-      const articleLink = doc.querySelectorAll('.post-card-title > a')[i].href;
+      const imageLink = card.querySelector('img').getAttribute('src');
+      const title = card
+        .querySelector('.post-card-title > a')
+        .textContent.trim();
+      const articleLink = card.querySelector('.post-card-title > a').href;
       // freeCodeCamp only has a single tag per article, but other sites have
-      // multiple tagss.  Saving tagss and tagLinks as arrays to have
+      // multiple tags.  Saving tagss and tagLinks as arrays to have
       // consistent data types.
       const tags = [
-        doc.querySelectorAll('.post-card-tags > a')[i].textContent.trim(),
+        card.querySelector('.post-card-tags > a').textContent.trim(),
       ];
-      const tagLinks = [doc.querySelectorAll('.post-card-tags > a')[i].href];
+      const tagLinks = [card.querySelector('.post-card-tags > a').href];
       const author = doc
-        .querySelectorAll('.author-name-tooltip')
-        [i].textContent.trim();
-      const authorLink = doc.querySelectorAll('.author-list-item > a')[i].href;
-      const authorImageLink = doc.querySelectorAll('.author-profile-image')[i]
-        .src;
-      const whenPublished =
-        doc.querySelectorAll('time.meta-item')[i].textContent;
+        .querySelector('.author-name-tooltip')
+        .textContent.trim();
+      const authorLink = card.querySelector('.author-list-item > a').href;
+      const authorImageLink = card.querySelector('.author-profile-image').src;
+      const whenPublished = card.querySelector('time.meta-item').textContent;
 
       const scrapeTimeStamp = Date.now();
       const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
@@ -67,3 +62,5 @@ module.exports.getFreeCodeCamp = async () => {
   });
   return articles;
 };
+
+// (async () => console.log(await getFreeCodeCamp()))();

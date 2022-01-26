@@ -21,6 +21,7 @@ module.exports.loadArticlesToMongoDb = async (articles) => {
   try {
     await client.connect();
     // preform database work here
+    // FIXME Check that database exists before attempting to drop it!!!!!
     await dropArticles(client);
     await insertArticles(client, articles);
   } catch (err) {
