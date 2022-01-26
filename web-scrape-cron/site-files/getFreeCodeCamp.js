@@ -5,8 +5,7 @@ const { getLocalTime } = require('../scrapeUtils');
 // https://www.freecodecamp.org/news/page/2/ ,
 // https://www.freecodecamp.org/news/page/3/ , etc.
 
-// module.exports.getFreeCodeCamp = async () => {
-const getFreeCodeCamp = async () => {
+module.exports.getFreeCodeCamp = async () => {
   let url = 'https://www.freecodecamp.org/news/';
   let articles = [];
 
@@ -68,7 +67,3 @@ const getFreeCodeCamp = async () => {
   });
   return articles;
 };
-
-(async () => {
-  console.log(await getFreeCodeCamp());
-})();
