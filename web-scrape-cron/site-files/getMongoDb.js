@@ -24,59 +24,70 @@ module.exports.getMongoDb = async (url) => {
         `[data-test='card'] > div > div > img`
       );
 
-      articleImages.forEach((article) => {
+      articleImages.forEach((articleImage) => {
         let tags = [];
         let tagLinks = [];
 
         // anchor element containing cards
-        let card = article.parentElement.parentElement.parentElement;
+        let card = articleImage.parentElement.parentElement.parentElement;
 
-        const imageLink = card.querySelector(`img`).getAttribute('src');
-        const title = card.querySelector(`h5`).textContent;
-        const articleLink = `https://www.mongodb.com${card.getAttribute(
-          'href'
-        )}`;
-        const tagAnchors = card.nextSibling.querySelectorAll('li > a');
+        // Once we've found the card we need to check the labels
+        // in the bottom left to make sure it says "ARTICLE".
+        // Podcasts are missing info that will cause the app to crash.
+        const articleLabel = card.querySelector(
+          'div > div > div > p'
+        ).textContent;
 
-        tagAnchors.forEach((tagAnchor) => {
-          let tag = tagAnchor.textContent;
-          let tagLink = tagAnchor.getAttribute('href');
-          if (
-            tag == null ||
-            tag == undefined ||
-            tag == '...' ||
-            tag.length > 15
-          ) {
-            tag = '';
-            tagLink = '';
+        if (articleLabel === 'article') {
+          const imageLink = card.querySelector(`img`).getAttribute('src');
+          const title = card.querySelector(`h5`).textContent;
+          const articleLink = `https://www.mongodb.com${card.getAttribute(
+            'href'
+          )}`;
+          if (card.nextSibling.querySelectorAll('li > a')) {
+            const tagAnchors = card.nextSibling.querySelectorAll('li > a');
+
+            tagAnchors.forEach((tagAnchor) => {
+              let tag = tagAnchor.textContent;
+              let tagLink = tagAnchor.getAttribute('href');
+              if (
+                tag == null ||
+                tag == undefined ||
+                tag == '...' ||
+                tag.length > 15
+              ) {
+                tag = '';
+                tagLink = '';
+              }
+              if (tag != '') {
+                tags = [...tags, `#${tag}`];
+                tagLinks = [...tagLinks, `https://mongodb.com${tagLink}`];
+              }
+            });
           }
-          if (tag != '') {
-            tags = [...tags, `#${tag}`];
-            tagLinks = [...tagLinks, `https://mongodb.com${tagLink}`];
-          }
-        });
 
-        const scrapeTimeStamp = Date.now();
-        const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
+          const scrapeTimeStamp = Date.now();
+          const scrapeTimeLocal = getLocalTime(scrapeTimeStamp);
 
-        const cardContent = {
-          sourceName: 'MongoDB',
-          sourceLink: 'https://www.mongodb.com/developer/learn',
-          sourceLogo: 'images/logos/mongodb.svg',
-          imageLink,
-          title,
-          articleLink,
-          tags, // array
-          tagLinks, // array
-          author: '',
-          authorLink: '',
-          authorImageLink: '',
-          whenPublished: '',
-          scrapeTimeStamp,
-          scrapeTimeLocal,
-        };
+          const cardContent = {
+            sourceName: 'MongoDB',
+            sourceLink: 'https://www.mongodb.com/developer/learn',
+            sourceLogo: 'images/logos/mongodb.svg',
+            imageLink,
+            title,
+            articleLink,
+            tags, // array
+            tagLinks, // array
+            author: '',
+            authorLink: '',
+            authorImageLink: '',
+            whenPublished: '',
+            scrapeTimeStamp,
+            scrapeTimeLocal,
+          };
 
-        articles = [...articles, cardContent];
+          articles = [...articles, cardContent];
+        }
       });
     });
   }
