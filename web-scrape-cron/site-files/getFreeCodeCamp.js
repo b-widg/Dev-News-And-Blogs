@@ -5,7 +5,8 @@ const { getLocalTime } = require('../scrapeUtils');
 // https://www.freecodecamp.org/news/page/2/ ,
 // https://www.freecodecamp.org/news/page/3/ , etc.
 
-module.exports.getFreeCodeCamp = async () => {
+// module.exports.getFreeCodeCamp = async () => {
+const getFreeCodeCamp = async () => {
   let url = 'https://www.freecodecamp.org/news/';
   let articles = [];
 
@@ -22,9 +23,7 @@ module.exports.getFreeCodeCamp = async () => {
     const articleCards = doc.querySelectorAll('.post-card');
 
     articleCards.forEach((card, i) => {
-      const imageLink =
-        'http://www.freecodecamp.org' +
-        doc.querySelectorAll('img.post-card-image')[i].getAttribute('data-src');
+      const imageLink = doc.querySelectorAll('img')[i].getAttribute('src');
       const title = doc
         .querySelectorAll('.post-card-title > a')
         [i].textContent.trim();
@@ -69,3 +68,7 @@ module.exports.getFreeCodeCamp = async () => {
   });
   return articles;
 };
+
+(async () => {
+  console.log(await getFreeCodeCamp());
+})();
