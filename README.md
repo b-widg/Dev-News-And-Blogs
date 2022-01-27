@@ -5,7 +5,6 @@ This project was created to use as a personal homepage so I don't need to search
 ![Screenshot](./public/images/DevNewsScreenShot.png)
 
 A Heroku Scheduler is used to run a scrape of a handful of sites once an hour and saves the article data to a MongoDb database.  The website pills from whatever is currently in the Mongo database.
-
 ## Dependencies
 - [axios](https://www.npmjs.com/package/axios) <img src="https://axios-http.com//assets/favicon.ico" alt="axios logo" width=15>
 - [dotenv](https://www.npmjs.com/package/dotenv) <img src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.png" alt="dotenv logo" width=16>
