@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="24.209mm" height="24.823mm" version="1.1" viewBox="0 0 24.209 24.823" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient53664" x1="157.39" x2="130.07" y1="33.583" y2="209.63" gradientTransform="matrix(.11678 0 0 .11678 2.676 6.8332)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#0ff" offset="0"/>
+   <stop stop-color="#0ff" stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="translate(-1.3686 -12.213)">
+  <ellipse cx="13.473" cy="24.624" rx="12.075" ry="12.382" fill-rule="evenodd" stroke-width=".030899"/>
+  <text transform="matrix(.035897 0 0 .10865 .34406 -22.399)" fill="#000000" font-family="sans-serif" font-size="192px" style="line-height:1.35;shape-inside:url(#rect1600);white-space:pre" xml:space="preserve"/>
+  <text transform="matrix(.030899 0 0 .030899 1.2684 10.803)" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect21454);white-space:pre" xml:space="preserve"/>
+ </g>
+ <g transform="translate(-1.3686 -12.213)">
+  <ellipse cx="13.473" cy="24.624" rx="12.075" ry="12.382" fill="#000080" fill-rule="evenodd" stroke="#000" stroke-width=".058709"/>
+  <g>
+   <text transform="matrix(.035897 0 0 .10865 .34406 -22.399)" fill="#000000" font-family="sans-serif" font-size="192px" style="line-height:1.35;shape-inside:url(#rect24690);white-space:pre" xml:space="preserve"/>
+   <text transform="matrix(.030899 0 0 .030899 1.2684 10.803)" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect24692);white-space:pre" xml:space="preserve"/>
+   <text transform="scale(.63515 1.5744)" x="6.6176701" y="20.104799" fill="url(#linearGradient53664)" font-family="Damascus" font-size="12.536px" font-weight="600" stroke="#000000" stroke-width=".061798" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:2.95" xml:space="preserve"><tspan x="6.6176701" y="20.104799" dx="0" fill="url(#linearGradient53664)" font-family="sans-serif" font-size="12.536px" font-weight="bold" stroke="#000000" stroke-width=".061798" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">DBN</tspan></text>
+  </g>
+ </g>
+</svg>
