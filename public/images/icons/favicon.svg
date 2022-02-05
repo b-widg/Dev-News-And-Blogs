@@ -2,7 +2,7 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg width="24.209mm" height="24.823mm" version="1.1" viewBox="0 0 24.209 24.823" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
-  <linearGradient id="linearGradient53664" x1="157.39" x2="130.07" y1="33.583" y2="209.63" gradientTransform="matrix(.11339 0 0 .11339 4.1478 6.7422)" gradientUnits="userSpaceOnUse">
+  <linearGradient id="linearGradient53664" x1="129.45" x2="129.32" y1="56.91" y2="217.54" gradientTransform="matrix(.13366 0 0 .13366 3.4139 7.768)" gradientUnits="userSpaceOnUse">
    <stop stop-color="#0ff" offset="0"/>
    <stop stop-color="#0ff" stop-opacity="0" offset="1"/>
   </linearGradient>
@@ -17,7 +17,7 @@
   <g>
    <text transform="matrix(.035897 0 0 .10865 .34406 -22.399)" fill="#000000" font-family="sans-serif" font-size="192px" style="line-height:1.35;shape-inside:url(#rect24690);white-space:pre" xml:space="preserve"/>
    <text transform="matrix(.030899 0 0 .030899 1.2684 10.803)" fill="#000000" font-family="sans-serif" font-size="40px" style="line-height:1.25;shape-inside:url(#rect24692);white-space:pre" xml:space="preserve"/>
-   <text transform="scale(.62294 1.6053)" x="7.9747944" y="19.627832" fill="url(#linearGradient53664)" font-family="Damascus" font-size="12.172px" font-weight="600" stroke="#000000" stroke-width=".060001" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:2.95" xml:space="preserve"><tspan x="7.9747944" y="19.627832" dx="0" fill="url(#linearGradient53664)" font-family="sans-serif" font-size="12.172px" font-weight="bold" stroke="#000000" stroke-width=".060001" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">DNB</tspan></text>
+   <text transform="scale(.72371 1.3818)" x="7.9252133" y="22.957645" fill="url(#linearGradient53664)" font-family="Damascus" font-size="14.348px" font-weight="600" stroke="#000000" stroke-width=".07073" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:2.95" xml:space="preserve"><tspan x="7.9252133" y="22.957645" dx="0" fill="url(#linearGradient53664)" font-family="sans-serif" font-size="14.348px" font-weight="bold" stroke="#000000" stroke-width=".07073" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">DN</tspan></text>
   </g>
  </g>
 </svg>
