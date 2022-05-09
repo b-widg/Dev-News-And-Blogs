@@ -16,7 +16,9 @@ const getArticles = async () => {
     const posts = doc.querySelectorAll('.snyk-post');
 
     posts.forEach((post) => {
-      const imageLink = post.querySelector('img').getAttribute('src');
+      const imageLink = post
+        .querySelector('.wp-post-image')
+        .getAttribute('src');
       const title = post.querySelector('h3 > a').textContent;
       const articleLink = post.querySelector('h3 > a').getAttribute('href');
       const tags = [
@@ -44,13 +46,13 @@ const getArticles = async () => {
         // scrapeTimeStamp,
         // scrapeTimeLocal,
       };
-
       articles = [...articles, cardContent];
     });
   });
   return articles;
 };
 
+// get author info and publication date
 const getAuthorPubDate = async (articleLink) => {
   let authorPubDate = {};
 
@@ -79,15 +81,22 @@ const getAuthorPubDate = async (articleLink) => {
   return authorPubDate;
 };
 
-module.exports.getSnyk = async () => {
+// module.exports.getSnyk = async () => {
+const getSnyk = async () => {
   let articles = [];
   let completeArticle = {};
   const initialArticles = await getArticles();
   for await (const article of initialArticles) {
     const authorPubDate = await getAuthorPubDate(article.articleLink);
     completeArticle = { ...article, ...authorPubDate };
+    console.log(
+      'file: getSnyk.js | line 90 | completeArticle',
+      completeArticle
+    );
     articles = [...articles, completeArticle];
     await wait(1000);
   }
   return articles;
 };
+
+getSnyk();
